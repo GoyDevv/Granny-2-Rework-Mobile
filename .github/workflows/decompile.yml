@@ -30,9 +30,10 @@ jobs:
             assets=json.load(sys.stdin)['assets']; \
             print([a['browser_download_url'] for a in assets if 'x86_64-unknown-linux-gnu' in a['name'] and a['name'].endswith('.tar.xz')][0])")
           echo "Downloading repak from: $URL"
+          mkdir -p /tmp/repak_extract
           curl -sL -o /tmp/repak.tar.xz "$URL"
-          tar -xJf /tmp/repak.tar.xz -C /tmp
-          find /tmp -type f -name repak -exec install -m 0755 {} /usr/local/bin/repak \;
+          tar -xJf /tmp/repak.tar.xz -C /tmp/repak_extract
+          find /tmp/repak_extract -type f -name repak -exec install -m 0755 {} /usr/local/bin/repak \;
           repak --version
 
       - name: Unzip the game build
