@@ -1,0 +1,6 @@
+Assets/Engine/Content/Maps/Entry.umap
+Assets/G2RRecreated/Content/DeveloperIntro/IntroMap.umap
+Assets/G2RRecreated/Content/Maps/AttensionMap.umap
+Assets/G2RRecreated/Content/Maps/MainDoorEscapeMap.umap
+Assets/G2RRecreated/Content/Maps/MainMenuMap.umap
+Assets/G2RRecreated/Content/Maps/TestMap.umap
