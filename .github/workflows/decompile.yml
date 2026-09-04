@@ -49,7 +49,7 @@ jobs:
           while IFS= read -r pak; do
             n=$((n+1))
             echo ">> Unpacking: $pak"
-            repak unpack "$pak" decompiled/Assets
+            repak unpack "$pak" -o decompiled/Assets
           done < <(find game -name '*.pak')
           echo "Unpacked $n pak file(s)"
           du -sh decompiled/Assets
