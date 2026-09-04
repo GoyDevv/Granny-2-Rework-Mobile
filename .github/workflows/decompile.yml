@@ -28,11 +28,11 @@ jobs:
           URL=$(curl -s https://api.github.com/repos/trumank/repak/releases/latest | \
             python3 -c "import json,sys; \
             assets=json.load(sys.stdin)['assets']; \
-            print([a['browser_download_url'] for a in assets if 'x86_64-unknown-linux-gnu' in a['name'] and a['name'].endswith('.zip')][0])")
+            print([a['browser_download_url'] for a in assets if 'x86_64-unknown-linux-gnu' in a['name'] and a['name'].endswith('.tar.xz')][0])")
           echo "Downloading repak from: $URL"
-          curl -sL -o /tmp/repak.zip "$URL"
-          unzip -o /tmp/repak.zip -d /usr/local/bin
-          chmod +x /usr/local/bin/repak
+          curl -sL -o /tmp/repak.tar.xz "$URL"
+          tar -xJf /tmp/repak.tar.xz -C /tmp
+          find /tmp -type f -name repak -exec install -m 0755 {} /usr/local/bin/repak \;
           repak --version
 
       - name: Unzip the game build
